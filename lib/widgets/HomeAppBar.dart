@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -9,23 +10,23 @@ class HomeAppBar extends StatelessWidget {
       color: Colors.white,
       padding: const EdgeInsets.all(25),
       child: Row(
-        children: const [
+        children: [
           Icon(
             Icons.sort,
             size: 30,
-            color: Colors.blue,
+            color: getPrimaryColor(),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.only(left: 20),
             child: Text(
               "JSJ Store",
               style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blueAccent),
+                  color: getPrimaryColor()),
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ],
       ),
     );

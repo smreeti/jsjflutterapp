@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     final categories = ['Men', 'Women', 'Kids', 'Accessories'];
@@ -22,7 +21,7 @@ class CategoriesWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "images/$category.png",
+                    "images/categories/$category.png",
                     width: 30,
                     height: 40,
                   ),
