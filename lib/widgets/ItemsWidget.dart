@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jsjflutterapp/models/CartProduct.dart';
 import 'package:jsjflutterapp/models/Product.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class ItemsWidget extends StatelessWidget {
-  const ItemsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,23 +75,28 @@ class ItemsWidget extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "\$${products[i].price.toString()}",
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            const Icon(
-                              Icons.add_shopping_cart,
-                              color: Colors.indigo,
-                            )
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, "cart");
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "\$${products[i].price.toString()}",
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              const Icon(
+                                Icons.add_shopping_cart,
+                                color: Colors.indigo,
+                              )
+                            ],
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),

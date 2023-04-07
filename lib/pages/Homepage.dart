@@ -88,7 +88,7 @@ class Homepage extends StatelessWidget {
                 ),
 
                 //Items widget
-                const ItemsWidget(),
+                ItemsWidget(),
               ],
             ),
           )

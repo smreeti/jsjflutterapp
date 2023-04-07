@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jsjflutterapp/widgets/CartAppBar.dart';
+import 'package:jsjflutterapp/widgets/CartBottomNavBar.dart';
 import 'package:jsjflutterapp/widgets/CartItem.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  const CartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +22,29 @@ class CartPage extends StatelessWidget {
                   topRight: Radius.circular(25),
                 )),
             child: Column(
-              children: const [CartItem()],
+              children:  [CartItem()],
             ),
-          )
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
+      bottomNavigationBar: const CartBottomNavBar(),
     );
   }
 }

@@ -27,7 +27,7 @@ class CartItem extends StatelessWidget {
                 Container(
                   height: 50,
                   width: 50,
-                  margin: EdgeInsets.only(right: 15),
+                  margin: const EdgeInsets.only(right: 15),
                   child: Image.asset("images/products/bagpack.png"),
                 ),
                 Padding(
@@ -35,7 +35,7 @@ class CartItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
+                    children: const [
                       Text("Product title",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold)),
@@ -47,21 +47,21 @@ class CartItem extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.delete_rounded,
                         color: Colors.red,
                       ),
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
@@ -72,7 +72,7 @@ class CartItem extends StatelessWidget {
                               ],
                               color: Colors.white,
                             ),
-                            child: Icon(
+                            child: const Icon(
                               CupertinoIcons.plus,
                               size: 18,
                             ),
@@ -88,7 +88,7 @@ class CartItem extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
@@ -99,7 +99,7 @@ class CartItem extends StatelessWidget {
                               ],
                               color: Colors.white,
                             ),
-                            child: Icon(
+                            child: const Icon(
                               CupertinoIcons.minus,
                               size: 18,
                             ),
