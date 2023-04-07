@@ -27,6 +27,7 @@ class HomeAppBar extends StatelessWidget {
             ),
           ),
           const Spacer(),
+
         ],
       ),
     );

@@ -52,7 +52,9 @@ class ItemsWidget extends StatelessWidget {
                         ],
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, "cart");
+                        },
                         child: Container(
                           margin: const EdgeInsets.all(10),
                           child: Image.asset(
@@ -84,7 +86,7 @@ class ItemsWidget extends StatelessWidget {
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             const Icon(
-                              Icons.shopping_cart_checkout,
+                              Icons.add_shopping_cart,
                               color: Colors.indigo,
                             )
                           ],
