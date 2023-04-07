@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jsjflutterapp/models/CartProduct.dart';
 import 'package:jsjflutterapp/models/Product.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
-class ItemsWidget extends StatelessWidget {
+class ProductsWidget extends StatelessWidget {
+  const ProductsWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     List<Product> products = getProducts();
@@ -52,7 +53,14 @@ class ItemsWidget extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, "cart");
+                          Navigator.pushNamed(
+                            context,
+                            'productDetail',
+                            arguments: {
+                              'productId': products[i].productId
+                              // add more properties of the product as needed
+                            },
+                          );
                         },
                         child: Container(
                           margin: const EdgeInsets.all(10),

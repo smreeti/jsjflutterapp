@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
 import 'package:jsjflutterapp/widgets/HomeAppBar.dart';
-import 'package:jsjflutterapp/widgets/ItemsWidget.dart';
+import 'package:jsjflutterapp/widgets/ProductsWidget.dart';
 import '../widgets/CategoriesWidget.dart';
 
 class Homepage extends StatelessWidget {
@@ -88,7 +88,7 @@ class Homepage extends StatelessWidget {
                 ),
 
                 //Items widget
-                ItemsWidget(),
+                const ProductsWidget(),
               ],
             ),
           )

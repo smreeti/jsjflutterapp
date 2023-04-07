@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jsjflutterapp/pages/Cartpage.dart';
 import 'package:jsjflutterapp/pages/Homepage.dart';
+import 'package:jsjflutterapp/pages/ProductDetail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (context) => const Homepage(),
         "cart": (context) => const CartPage(),
+        "productDetail": (context) => ProductDetail(),
       },
     );
   }
