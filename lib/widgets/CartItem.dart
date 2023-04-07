@@ -1,21 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jsjflutterapp/models/Product.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({Key? key, required this.productId}) : super(key: key);
+
+  final String productId;
 
   @override
   Widget build(BuildContext context) {
+    // Get the list of products
+    List<Product> products = getProducts();
+
+    // Find the product with the matching ID
+    Product product =
+        products.firstWhere((prod) => prod.productId == productId);
+
     return Column(
       children: [
         Container(
             height: 120,
-            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.all(3),
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
@@ -25,23 +35,24 @@ class CartItem extends StatelessWidget {
                   onChanged: (index) {},
                 ),
                 Container(
-                  height: 50,
+                  height: 70,
                   width: 50,
-                  margin: const EdgeInsets.only(right: 15),
-                  child: Image.asset("images/products/bagpack.png"),
+                  margin: const EdgeInsets.only(right: 5),
+                  child: Image.asset(product.imageUrl),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Product title",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold)),
-                      Text("\$55",
-                          style: TextStyle(
-                            fontSize: 16,
+                    children: [
+                      Flexible(
+                          child: Text(product.title,
+                              style: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold))),
+                      Text('\$${product.price.toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.bold,
                           ))
                     ],
@@ -49,7 +60,7 @@ class CartItem extends StatelessWidget {
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,11 +85,11 @@ class CartItem extends StatelessWidget {
                             ),
                             child: const Icon(
                               CupertinoIcons.plus,
-                              size: 18,
+                              size: 14,
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 10),
+                            margin: const EdgeInsets.symmetric(horizontal: 5),
                             child: Text(
                               "01",
                               style: TextStyle(
@@ -101,7 +112,7 @@ class CartItem extends StatelessWidget {
                             ),
                             child: const Icon(
                               CupertinoIcons.minus,
-                              size: 18,
+                              size: 14,
                             ),
                           )
                         ],

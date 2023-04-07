@@ -18,25 +18,25 @@ List<Product> getProducts() {
   const baseUrl = "images/products/";
   List<Product> products = [
     Product(
-        productId: 1,
+        productId: "1",
         title: 'Women\'s Printed T-shirt',
         price: 10.99,
         imageUrl: "${baseUrl}women-tshirt.png",
         discount: '-5%'),
     Product(
-        productId: 2,
+        productId: "2",
         title: 'Men Grey Jacket',
         price: 20.99,
         imageUrl: "${baseUrl}men-jacket.png",
         discount: '-15%'),
     Product(
-        productId: 3,
+        productId: "3",
         title: 'Red Shirt for Kids',
         price: 30.99,
         imageUrl: "${baseUrl}red-shirt.png",
         discount: '-1%'),
     Product(
-        productId: 4,
+        productId: "4",
         title: 'Black Bagpack',
         price: 12.99,
         imageUrl: "${baseUrl}bagpack.png",
