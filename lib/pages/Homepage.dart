@@ -97,7 +97,7 @@ class Homepage extends StatelessWidget {
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         onTap: (index) {},
-        height: 60,
+        height: 40,
         color: getPrimaryColor(),
         items: const [
           Icon(

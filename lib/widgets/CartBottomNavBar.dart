@@ -27,22 +27,32 @@ class CartBottomNavBar extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22))
               ],
             ),
-            Container(
-              height: 50,
-              alignment: Alignment.center,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  color: getPrimaryColor(),
-                  borderRadius: BorderRadius.circular(25)),
-              child: const Text(
-                "Check out",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+
+        InkWell(
+          onTap: () {
+            Navigator.pushNamed(
+                context,
+                'checkout'
+            );
+          },
+          child: Container(
+            height: 50,
+            alignment: Alignment.center,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: getPrimaryColor(),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: const Text(
+              "Check out",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-            )
+            ),
+          ),
+        )
           ],
         ),
       ),
