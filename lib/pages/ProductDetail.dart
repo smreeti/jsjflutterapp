@@ -15,23 +15,33 @@ class ProductDetail extends StatelessWidget {
     List<Color> colors = [Colors.red, Colors.green, Colors.blue, Colors.black];
 
     final arguments =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
     // Get the list of products
-    List<Product> products = getProducts();
+    List<Product> products = CommonUtility.getProducts();
 
     // Find the product with the matching ID
     Product product =
-        products.firstWhere((prod) => prod.productId == arguments['productId']);
+    products.firstWhere((prod) => prod.productId == arguments['productId']);
 
     return Scaffold(
-      backgroundColor: getBackgroundColor(),
+      backgroundColor: Colors.grey[200],
       body: ListView(
         children: [
-          const ProductDetailAppBar(),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Image.asset(product.imageUrl, height: 315),
+          Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                const ProductDetailAppBar(),
+                Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Image.asset(product.imageUrl, height: 315),
+                  ),
+                ),
+              ],
+            ),
           ),
           Arc(
             edge: Edge.TOP,
@@ -48,11 +58,13 @@ class ProductDetail extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 50, bottom: 20),
                       child: Row(
                         children: [
-                          Text(
-                            product.title,
-                            style: const TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          )
+                          Flexible(
+                            child: Text(
+                              product.title,
+                              style: const TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -62,7 +74,7 @@ class ProductDetail extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           RatingBar.builder(
-                            initialRating: 4,
+                            initialRating: product.rating,
                             minRating: 1,
                             direction: Axis.horizontal,
                             itemCount: 5,
@@ -70,7 +82,7 @@ class ProductDetail extends StatelessWidget {
                             itemPadding:
                                 const EdgeInsets.symmetric(horizontal: 4),
                             itemBuilder: (context, _) =>
-                                const Icon(Icons.favorite),
+                                const Icon(Icons.favorite, color: Colors.red,),
                             onRatingUpdate: (double value) {},
                           ),
                           Row(
@@ -102,7 +114,7 @@ class ProductDetail extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: getPrimaryColor()),
+                                      color: CommonUtility.getPrimaryColor()),
                                 ),
                               ),
                               Container(
@@ -172,7 +184,7 @@ class ProductDetail extends StatelessWidget {
                           ]),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -181,6 +193,7 @@ class ProductDetail extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: ProductDetailBottomNavBar(
+        product: product,
         price: product.price,
       ),
     );

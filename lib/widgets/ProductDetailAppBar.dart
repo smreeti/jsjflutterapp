@@ -34,7 +34,7 @@ class ProductDetailAppBar extends StatelessWidget {
           Icon(
             Icons.thumb_up_alt_outlined,
             size: 30,
-            color: getPrimaryColor(),
+            color: CommonUtility.getPrimaryColor(),
           )
         ],
       ),

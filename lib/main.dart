@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     // Show splash screen for 5 seconds
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         _showSplashScreen = false;
       });
@@ -41,8 +41,8 @@ class _MyAppState extends State<MyApp> {
       home: _showSplashScreen ? const SplashPage() : const Homepage(),
       routes: {
         "cart": (context) => const CartPage(),
-        "productDetail": (context) => ProductDetail(),
-        "checkout": (context) => CheckoutForm()
+        "productDetail": (context) => const ProductDetail(),
+        "checkout": (context) => const CheckoutForm()
       },
     );
   }

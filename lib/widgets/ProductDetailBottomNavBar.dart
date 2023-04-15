@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:jsjflutterapp/models/Product.dart';
+import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class ProductDetailBottomNavBar extends StatelessWidget {
+  final Product product;
   final double price;
 
-  const ProductDetailBottomNavBar({Key? key, required this.price})
+  const ProductDetailBottomNavBar(
+      {Key? key, required this.price, required this.product})
       : super(key: key);
 
   // This widget is the root of your application.
@@ -37,7 +42,17 @@ class ProductDetailBottomNavBar extends StatelessWidget {
               ),
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                CommonUtility.addProductsToCart(product);
+                Fluttertoast.showToast(
+                    msg: "Product added to cart",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    textColor: Colors.white,
+                    fontSize: 16.0
+                );
+              },
               icon: const Icon(CupertinoIcons.cart_badge_plus),
               label: const Text(
                 "Add to Cart",

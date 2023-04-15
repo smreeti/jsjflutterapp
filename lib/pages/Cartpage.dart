@@ -2,34 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:jsjflutterapp/widgets/CartAppBar.dart';
 import 'package:jsjflutterapp/widgets/CartBottomNavBar.dart';
 import 'package:jsjflutterapp/widgets/CartItem.dart';
+import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
 
   @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  @override
   Widget build(BuildContext context) {
-    final arguments =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-
-    final productId = arguments['productId'];
-    // retrieve more properties of the product as needed
-
     return Scaffold(
       body: SafeArea(
-        child: ListView(
+        child: Column(
           children: [
             const CartAppBar(),
-            Container(
-              height: 700,
-              padding: const EdgeInsets.only(top: 15),
-              decoration: const BoxDecoration(
-                  color: Color(0xFFEDECF2),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  )),
-              child: Column(
-                children: [CartItem(productId: productId)],
+            Expanded(
+              child: ListView.builder(
+                itemCount: CommonUtility.cartItems.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return CartItem(
+                    product: CommonUtility.cartItems[index],
+                    onRemove: () {
+                      setState(() {
+                        CommonUtility.removeProductFromCart(
+                            CommonUtility.cartItems[index]);
+                      });
+                    },
+                  );
+                },
               ),
             ),
             Container(

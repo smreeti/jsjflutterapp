@@ -4,19 +4,14 @@ import 'package:jsjflutterapp/models/Product.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({Key? key, required this.productId}) : super(key: key);
+  const CartItem({Key? key, required this.product, required this.onRemove})
+      : super(key: key);
 
-  final String productId;
+  final Product product;
+  final VoidCallback onRemove;
 
   @override
   Widget build(BuildContext context) {
-    // Get the list of products
-    List<Product> products = getProducts();
-
-    // Find the product with the matching ID
-    Product product =
-        products.firstWhere((prod) => prod.productId == productId);
-
     return Column(
       children: [
         Container(
@@ -26,14 +21,16 @@ class CartItem extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                ),
+              ],
             ),
             child: Row(
               children: [
-                Radio(
-                  value: "",
-                  groupValue: "",
-                  onChanged: (index) {},
-                ),
                 Container(
                   height: 70,
                   width: 50,
@@ -47,9 +44,12 @@ class CartItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
-                          child: Text(product.title,
-                              style: const TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold))),
+                          child: Text(
+                        product.title,
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                      )),
                       Text('\$${product.price.toStringAsFixed(2)}',
                           style: const TextStyle(
                             fontSize: 14,
@@ -65,9 +65,16 @@ class CartItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Icon(
-                        Icons.delete_rounded,
-                        color: Colors.red,
+                      GestureDetector(
+                        onTap: () {
+                          onRemove();
+                          CommonUtility
+                              .calculateTotalAmount(); // Update total amount
+                        },
+                        child: const Icon(
+                          Icons.delete_rounded,
+                          color: Colors.red,
+                        ),
                       ),
                       Row(
                         children: [
@@ -95,7 +102,7 @@ class CartItem extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: getPrimaryColor()),
+                                  color: CommonUtility.getPrimaryColor()),
                             ),
                           ),
                           Container(

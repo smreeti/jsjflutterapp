@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:jsjflutterapp/models/Product.dart';
 import 'package:jsjflutterapp/utils/CommonUtility.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ProductsWidget extends StatelessWidget {
   const ProductsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<Product> products = getProducts();
+    List<Product> products = CommonUtility.getProducts();
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -84,13 +85,14 @@ class ProductsWidget extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            'cart',
-                            arguments: {
-                              'productId': products[i].productId
-                              // add more properties of the product as needed
-                            },
+                          CommonUtility.addProductsToCart(products[i]);
+                          Fluttertoast.showToast(
+                              msg: "Product added to cart",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              textColor: Colors.white,
+                              fontSize: 16.0
                           );
                         },
                         child: Padding(

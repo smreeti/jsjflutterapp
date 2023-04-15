@@ -5,6 +5,7 @@ class Product {
   String imageUrl;
   String discount;
   String description;
+  double rating;
 
   Product(
       {required this.productId,
@@ -12,5 +13,6 @@ class Product {
       required this.price,
       required this.imageUrl,
       required this.discount,
-      required this.description});
+      required this.description,
+      required this.rating});
 }

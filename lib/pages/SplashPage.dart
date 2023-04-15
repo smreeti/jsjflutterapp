@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.of(context).size.width / 2,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -28,7 +28,7 @@ class SplashPage extends StatelessWidget {
                   width: 200,
                   height: 200,
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
               ],
             ),
           ),
@@ -37,7 +37,7 @@ class SplashPage extends StatelessWidget {
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 SizedBox(height: 20),
                 Text(
                   'Loading...',

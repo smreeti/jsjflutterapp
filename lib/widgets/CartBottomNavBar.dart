@@ -6,6 +6,7 @@ class CartBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BottomAppBar(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -19,40 +20,39 @@ class CartBottomNavBar extends StatelessWidget {
                 Text(
                   "Total:",
                   style: TextStyle(
-                      color: getPrimaryColor(),
+                      color: CommonUtility.getPrimaryColor(),
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                const Text("\$250",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22))
+                // Display the total amount in a Text widget
+                Text(
+                  '\$${CommonUtility.calculateTotalAmount().toStringAsFixed(2)}',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
               ],
             ),
-
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(
-                context,
-                'checkout'
-            );
-          },
-          child: Container(
-            height: 50,
-            alignment: Alignment.center,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: getPrimaryColor(),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            child: const Text(
-              "Check out",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, 'checkout');
+              },
+              child: Container(
+                height: 50,
+                alignment: Alignment.center,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: CommonUtility.getPrimaryColor(),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: const Text(
+                  "Check out",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-            ),
-          ),
-        )
+            )
           ],
         ),
       ),

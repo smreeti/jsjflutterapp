@@ -4,6 +4,7 @@ import 'package:jsjflutterapp/utils/CommonUtility.dart';
 import 'package:jsjflutterapp/widgets/HomeAppBar.dart';
 import 'package:jsjflutterapp/widgets/ProductsWidget.dart';
 import '../widgets/CategoriesWidget.dart';
+import 'Cartpage.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -76,7 +77,7 @@ class Homepage extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   margin:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
                   child: const Text(
                     "Our Products",
                     style: TextStyle(
@@ -98,19 +99,27 @@ class Homepage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         onTap: (index) {},
         height: 40,
-        color: getPrimaryColor(),
-        items: const [
-          Icon(
+        color: CommonUtility.getPrimaryColor(),
+        items: [
+          const Icon(
             Icons.home,
             size: 25,
             color: Colors.white,
           ),
-          Icon(
-            Icons.shopping_cart,
-            size: 25,
-            color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartPage()),
+              );
+            },
+            child: const Icon(
+              Icons.shopping_cart,
+              size: 25,
+              color: Colors.white,
+            ),
           ),
-          Icon(
+          const Icon(
             Icons.list,
             size: 25,
             color: Colors.white,
