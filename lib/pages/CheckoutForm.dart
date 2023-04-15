@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jsjflutterapp/utils/CommonUtility.dart';
 
 class CheckoutForm extends StatelessWidget {
   const CheckoutForm({Key? key}) : super(key: key);
@@ -179,8 +180,32 @@ class CheckoutForm extends StatelessWidget {
                     ),
                   ),
                 ),
+              const SizedBox(height:20),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, 'checkout');
+                },
+                child: Container(
+                  height: 50,
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: CommonUtility.getPrimaryColor(),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: const Text(
+                    "Confirm Check out",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
+
         ),
       ),
     );
