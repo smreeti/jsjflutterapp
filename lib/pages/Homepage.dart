@@ -72,12 +72,13 @@ class Homepage extends StatelessWidget {
 
                 //Categories widget section
                 const CategoriesWidget(),
+                const SizedBox(height: 25),
 
                 //Items
                 Container(
                   alignment: Alignment.centerLeft,
                   margin:
-                  const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: const Text(
                     "Our Products",
                     style: TextStyle(
